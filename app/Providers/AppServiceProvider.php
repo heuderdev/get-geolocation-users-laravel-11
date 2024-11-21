@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,9 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        if ($this->app->isLocal()) {
-            $this->app->register(IdeHelperServiceProvider::class);
-        }
+        //
     }
 
     /**
@@ -23,12 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Validator::extend('website', function ($attribute, $value, $parameters, $validator) {
-            return filter_var($value, FILTER_VALIDATE_URL);
-        });
-
-        Validator::replacer('website', function ($message, $attribute, $rule, $parameters) {
-            return "O campo {$attribute} deve conter uma URL válida.";
-        });
+        Vite::prefetch(concurrency: 3);
     }
 }
