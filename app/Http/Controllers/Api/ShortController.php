@@ -15,10 +15,11 @@ class ShortController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $shorts = Short::with(['ips','ips.geolocation'])->where('user_id', Auth::id())->paginate(10);
+        $shorts = Short::with(['ips', 'ips.geolocation'])->where('user_id', Auth::id())->simplePaginate(1);
 
         return response()->json($shorts);
     }
+
     public function redirect_url(Request $request): RedirectResponse|JsonResponse
     {
         $shortUrl = $request->route('short_id');

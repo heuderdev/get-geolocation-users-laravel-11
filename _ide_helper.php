@@ -22942,6 +22942,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
+            class Horizon extends \Laravel\Horizon\Horizon {}
     }
 
 
