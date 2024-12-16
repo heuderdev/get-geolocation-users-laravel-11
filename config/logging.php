@@ -126,6 +126,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        'custom_date_hour' => [
+            'driver' => 'daily',
+            'path' =>  storage_path('logs/custom-'.now()->format('Y-m-d--H-i-s-').uniqid().'.log'),
+            'level' => 'debug',
+            'days' => 0, // Limite de dias. 0 para não limitar.
+        ],
 
     ],
 

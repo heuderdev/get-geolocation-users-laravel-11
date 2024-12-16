@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\External\IpExternal;
 use App\External\LocationExternal;
 use App\Models\GeoLocation;
 use App\Models\Ip;
@@ -11,14 +10,8 @@ use Illuminate\Support\Facades\Log;
 
 class IpServices
 {
-    public static function store($id,$ip)
+    public static function store($id, $ip)
     {
-        // $myIp = IpExternal::ip()->original;
-        Log::debug("================================");
-        Log::debug($id);
-        Log::debug($ip);
-        Log::debug("================================");
-
         $created_ip = Ip::query()->create([
             'short_id' => $id,
             'address_ip' => $ip
@@ -26,7 +19,8 @@ class IpServices
 
         $geo_location = LocationExternal::find($ip);
 
-        Log::debug($geo_location);
+//        Log::debug($geo_location);
+        Log::channel('custom_date_hour')->debug($geo_location);
 
         GeoLocation::query()->create([
             'ip_id' => $created_ip->id,

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "geoip2/geoip2": "^3.1",
         "inertiajs/inertia-laravel": "^1.0",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^11.9",
@@ -75,6 +76,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "ext-pcntl": "7.4.0"
         }
     },
     "minimum-stability": "stable",
